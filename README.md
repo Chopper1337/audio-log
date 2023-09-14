@@ -1,5 +1,5 @@
 # audio-log
-Using voice transcription to create easily recorded audio logs
+Using voice transcription to easily create audio logs
 
 ## Setup
 
@@ -15,6 +15,9 @@ cd audio-log
 
 `./audio_log.sh`
 
+This will create a folder named for the current date, such as `20230914_231509`, this will contain your recorded audio file and the transcription.
+
 ### Download different models
 
 `./setup.sh -m`
+
