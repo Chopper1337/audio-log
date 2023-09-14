@@ -3,7 +3,8 @@ Using voice transcription to create easily recorded audio logs
 
 ## Setup
 
-```git clone https://github.com/Chopper1337/audio-log
+```
+git clone https://github.com/Chopper1337/audio-log
 cd audio-log
 ./setup.sh
 ```
