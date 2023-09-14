@@ -16,6 +16,4 @@ If you wish to use a model other than the default `ggml-small.bin`:
 
 Run `./setup.sh -m` to download skip to the model download menu and select your model
 
-Then run `audio_log.sh` followed by the name of the model, example:
-
-`./audio_log.sh ggml-large.bin`
+Then run `./audio_log.sh` and select your model
