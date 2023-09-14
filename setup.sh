@@ -32,7 +32,7 @@ determine_gpu(){
         echo "NVIDIA GPU detected"
         nvidia_gpu
     else
-        echo "No GPU detected, you can manually build whisper.cpp if your GPU was not detected."
+        echo "No GPU detected, you can manually build whisper.cpp, following the whisper.cpp README.md, if your GPU was not detected."
 fi
 }
 
@@ -40,10 +40,6 @@ model_msg(){
     echo -e "\nPlease ignore the usage message above, it is outputted by the model downloader."
     echo -e "\nTo use the audio log, you can run:"
     echo -e "\t./audio_log.sh"
-    echo -e "\nTo use the audio log with a model other than small (the default), you can run:"
-    echo -e "\t./audio_log.sh [model-file-name]"
-    echo -e "\nExample:"
-    echo -e "\t./audio_log.sh ggml-small.bin"
 }
 
 select_model_download(){
@@ -70,7 +66,7 @@ select_model_download(){
         ./download-ggml-model.sh large
         model_msg
     elif [[ $REPLY =~ ^[4]$ ]]; then
-        echo "Not downloading a model. Please run whisper.cpp/download-ggml-model.sh manually."
+        echo -e "Not downloading a model. You can return to this menu by running:\n\t./setup.sh -m"
     else
         echo "Invalid selection, please try again."
         select_model_download
