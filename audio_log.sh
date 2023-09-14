@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Take the first arg as the name of the model
-# If no arg is given, use ggml-small.bin as default
-model=${1:-ggml-small.bin}
-
 check_whisper()
 {
     # Check if whisper.cpp/main exists
@@ -12,15 +8,41 @@ check_whisper()
         echo "Please build whisper.cpp first by running setup.sh or manually following whisper.cpp/README.md"
         exit 1
     fi
+}
 
-    # Check if the model exists
-    if [ ! -f "whisper.cpp/models/$model" ]; then
-        echo "$model not found, please run setup.sh first or manually download the model following whisper.cpp/README.md"
+select_model(){
+    # For every .bin file in whisper.cpp/models, excluding those which contain "test", print the filename
+    # and increment the count
+    count=0
+    for file in whisper.cpp/models/*.bin; do
+        if [[ ! "$file" =~ "test" ]]; then
+            echo "$count. $(basename "$file")"
+            count=$((count+1))
+        fi
+    done
+
+    if [ $count -eq 0 ]; then
+        echo -e "No models were found, please run\n\tsetup.sh -m\nto download a model."
         exit 1
     fi
+
+
+    read -p "Which model do you want to use? " -n 1 -r
+    echo
+    # If the input is a number, use that as the index
+    if [[ $REPLY =~ ^[0-9]$ ]]; then
+        # Get the filename of the model at the index
+        model=$(ls whisper.cpp/models/*.bin | sed -n "$((REPLY+1))p")
+        echo "Using $model"
+    else
+        echo "Invalid selection, please try again."
+        select_model
+    fi
+
 }
 
 check_whisper
+select_model
 today=$(date +%Y%m%d_%H%M%S)
 echo "Today is $today"
 echo "Creating directory $today"

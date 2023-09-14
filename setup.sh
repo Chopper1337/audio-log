@@ -39,11 +39,11 @@ fi
 model_msg(){
     echo -e "\nPlease ignore the usage message above, it is outputted by the model downloader."
     echo -e "\nTo use the audio log, you can run:"
-    echo -e "\t./audio-log.sh"
+    echo -e "\t./audio_log.sh"
     echo -e "\nTo use the audio log with a model other than small (the default), you can run:"
-    echo -e "\t./audio-log.sh [model-file-name]"
+    echo -e "\t./audio_log.sh [model-file-name]"
     echo -e "\nExample:"
-    echo -e "\t./audio-log.sh ggml-small.bin"
+    echo -e "\t./audio_log.sh ggml-small.bin"
 }
 
 select_model_download(){
@@ -82,6 +82,12 @@ select_model_download(){
 clear
 # Navigate into the whisper.cpp directory
 cd ./whisper.cpp/ || exit
+
+# If the models flag is passed, download the models and exit
+if [ "$1" == "-m" ]; then
+    select_model_download
+    exit 0
+fi
 
 clear
 determine_gpu
