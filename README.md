@@ -3,6 +3,8 @@ Using voice transcription to easily create audio logs
 
 ## Setup
 
+Please be sure you meet the requirements to run [whisper.cpp](https://github.com/ggerganov/whisper.cpp)!
+
 ```
 git clone https://github.com/Chopper1337/audio-log --recursive
 cd audio-log
