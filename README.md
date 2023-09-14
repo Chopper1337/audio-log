@@ -4,17 +4,17 @@ Using voice transcription to create easily recorded audio logs
 ## Setup
 
 ```
-git clone https://github.com/Chopper1337/audio-log
+git clone https://github.com/Chopper1337/audio-log --recursive
 cd audio-log
 ./setup.sh
 ```
 
 ## Usage
 
-To create an entry, simply run `./audio_log.sh`
+### Create an entry
 
-If you wish to use a model other than the default `ggml-small.bin`:
+`./audio_log.sh`
 
-Run `./setup.sh -m` to download skip to the model download menu and select your model
+### Download different models
 
-Then run `./audio_log.sh` and select your model
+`./setup.sh -m`
