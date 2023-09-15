@@ -22,3 +22,5 @@ This will create a folder named for the current date, such as `20230914_231509`,
 ### Download different models
 
 `./setup.sh -m`
+
+You can use models other than those provided in the setup script, see [whisper.cpp/models](https://github.com/ggerganov/whisper.cpp/tree/master/models)
