@@ -22,4 +22,3 @@ This will create a folder named for the current date, such as `20230914_231509`,
 ### Download different models
 
 `./setup.sh -m`
-
