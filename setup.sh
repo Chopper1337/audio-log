@@ -90,12 +90,15 @@ determine_gpu
 
 if [ $BUILD_OPENCL -eq 1 ]; then
     echo "Building whisper.cpp with OpenCL GPU support via CLBlast..."
+    make clean
     WHISPER_CLBLAST=1 make -j
 elif [ $BUILD_CUDA -eq 1 ]; then
     echo "Building whisper.cpp with NVIDIA GPU support via cuBLAS..."
+    make clean
     WHISPER_CUBLAS=1 make -j
 else
     echo "Building whisper.cpp..."
+    make clean
     make
 fi
 
