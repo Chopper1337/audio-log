@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 
 # Variables
 BUILD_OPENCL=0
@@ -32,7 +31,7 @@ determine_gpu(){
         echo "NVIDIA GPU detected"
         nvidia_gpu
     else
-        echo "No GPU detected, you can manually build whisper.cpp, following the whisper.cpp README.md, if your GPU was not detected."
+        echo "Couldn't detect GPU. Follow ./whisper.cpp/README.md to manually build whisper.cpp with support for OpenCL or CUDA."
 fi
 }
 
@@ -75,12 +74,17 @@ select_model_download(){
 }
 
 
-clear
+# clear
 # Navigate into the whisper.cpp directory
 cd ./whisper.cpp/ || exit
 
 # If the models flag is passed, download the models and exit
-if [ "$1" == "-m" ]; then
+if [ "$1" == "-h" ]; then
+    echo "Run setup: $0"
+    echo "Help: $0 -h"
+    echo "Download models: $0 -m"
+    exit 1
+  elif [ "$1" == "-m" ]; then
     select_model_download
     exit 0
 fi
